@@ -2,9 +2,13 @@
 # OpenTranslate
 
 OpenTranslate is powered by an opensource translation engine, giving you great translations.
-However it has a 5000 character limit per a day, per IP. 
-This can be used asynchronously.
+However we do have a 500 character limit per a translation we are currently still working on bulk translations per use. 
+This can be used synchronously or asynchronously.
 
+
+## Optimizations
+
+We have added better error handling to the package and fixed up some bugs that we found during testing which caused empty json strings to be returned.
 ## Package Dependencies
 
 | Package             | Version                                                              |
@@ -20,7 +24,7 @@ using OpenTranslate;
 
 var engine = new OpenTranslateClient();
 
-string json = await engine.GetTranslation("Hello, May the forc e be with you.", "en", "es");
+string json = await engine.GetTranslation("Hello, May the force be with you.", "en", "es");
 
 Results results = JsonSerializer.Deserialize<Results>(json);
 
@@ -32,9 +36,17 @@ internal class Results
   public string Translation {get;set;}
   public string Percentage {get;set;}
   public string LanguageFrom {get;set;}
-  public string LanguageFrom {get;set;}
+  public string LanguageTo {get;set;}
 }
 ```
+
+
+## Roadmap
+
+- Add OCR image and document translations.
+(currently we have started development on this.)
+
+- Add code and performance optimisation.
 
 
 ## License
@@ -44,5 +56,5 @@ internal class Results
 
 ## Support
 
-For support, email jadenyukinum1@gmail.com.
+For support, email WebsiterzTech@gmail.com.
 
